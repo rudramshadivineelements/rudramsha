@@ -6,6 +6,9 @@ import react from '@vitejs/plugin-react';
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === 'seatbelt';
 
 export default defineConfig({
+  // Relative asset URLs work on both the GitHub project path (/rudramsha/)
+  // and the custom domain root (rudramsha.com).
+  base: './',
   css: { postcss: { plugins: [tailwindcss()] } },
   server: isCodexSeatbeltSandbox
     ? { watch: { useFsEvents: false, usePolling: true } }

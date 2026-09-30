@@ -147,7 +147,7 @@ function App() {
             <div className="hero-image-frame">
               {/* A static Vite site uses a pre-compressed local WebP rather than a framework image component. */}
               {/* oxlint-disable-next-line next/no-img-element */}
-              <img src="/hero.webp" width="1400" height="788" alt="A natural Rudraksha bead and polished stones arranged on dark stone" className="hero-image" />
+              <img src={`${import.meta.env.BASE_URL}hero.webp`} width="1400" height="788" alt="A natural Rudraksha bead and polished stones arranged on dark stone" className="hero-image" />
             </div>
             <div className="hero-image-ring hero-image-ring-one" aria-hidden="true" />
             <div className="hero-image-ring hero-image-ring-two" aria-hidden="true" />
