@@ -1,3 +1,4 @@
+/* oxlint-disable next/no-html-link-for-pages -- This is a Vite multi-page site, not Next.js. */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
@@ -43,18 +44,21 @@ const collections = [
     title: 'Rudraksha',
     copy: 'Individual beads selected for natural character, clarity of form, and meaningful daily practice.',
     tone: 'collection-rudraksha',
-  },
-  {
-    eyebrow: 'Wearable practice',
-    title: 'Mala & bracelets',
-    copy: 'Thoughtfully composed pieces designed to sit comfortably in meditation and everyday life.',
-    tone: 'collection-mala',
+    category: 'rudraksha',
   },
   {
     eyebrow: 'Earth’s palette',
-    title: 'Natural stones',
-    copy: 'Semi-precious stones chosen for colour, character, finish, and the quiet beauty of natural variation.',
+    title: 'Semi-precious stones',
+    copy: 'Natural stones selected for colour, character, polish, and the quiet beauty of variation.',
     tone: 'collection-stones',
+    category: 'stones',
+  },
+  {
+    eyebrow: 'Sacred geometry',
+    title: 'Yantras',
+    copy: 'Traditional geometric forms in brass and copper for meditation, ritual, and sacred spaces.',
+    tone: 'collection-mala',
+    category: 'yantras',
   },
 ];
 
@@ -116,7 +120,7 @@ function App() {
           <div className="hidden items-center gap-9 text-[11px] font-medium uppercase tracking-[0.18em] text-cream/70 md:flex">
             <a className="nav-link" href="#story">Our philosophy</a>
             <a className="nav-link" href="#guide">Rudraksha guide</a>
-            <a className="nav-link" href="#collection">Collection</a>
+            <a className="nav-link" href="./catalog/">Catalogue</a>
           </div>
 
           <a href="#enquire" className="nav-enquire">
@@ -135,8 +139,8 @@ function App() {
               Authentic Rudrakshas and semi-precious stones, thoughtfully sourced for those who seek meaning, beauty, and a deeper connection to the natural world.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
-              <a href="#collection" className="cta-primary group">
-                Discover the collection
+              <a href="./catalog/" className="cta-primary group">
+                Explore the catalogue
                 <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </a>
               <a href="#story" className="cta-secondary">The story of Rudraksha</a>
@@ -282,7 +286,10 @@ function App() {
                     <span className="collection-index">0{index + 1}</span>
                   </div>
                   <p>{item.copy}</p>
-                  <WhatsAppLink label={`Enquire about ${item.title}`} className="collection-link" />
+                  <a href={`./catalog/?category=${item.category}`} className="collection-link">
+                    View {item.title}
+                    <ArrowUpRight className="size-3.5" />
+                  </a>
                 </div>
               </article>
             ))}
@@ -349,7 +356,7 @@ function App() {
             <div className="flex flex-wrap gap-x-7 gap-y-3 text-[9px] font-semibold uppercase tracking-[0.2em] text-cream/48">
               <a className="footer-link" href="#story">Our story</a>
               <a className="footer-link" href="#guide">Rudraksha guide</a>
-              <a className="footer-link" href="#collection">Collection</a>
+              <a className="footer-link" href="./catalog/">Catalogue</a>
               <a className="footer-link" href="#enquire">Contact</a>
             </div>
           </div>

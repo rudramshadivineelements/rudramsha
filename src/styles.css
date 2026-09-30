@@ -1,5 +1,6 @@
 @import 'tailwindcss' source(none);
 @source './main.tsx';
+@source './catalog.tsx';
 
 @theme inline {
   --color-background: var(--background);
@@ -125,9 +126,44 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .whatsapp-cta { position: relative; z-index: 2; margin-top: 2.5rem; display: inline-flex; align-items: center; gap: .7rem; border-radius: 999px; background: var(--gold); padding: 1rem 1.5rem; color: var(--forest); font-size: 10px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; transition: 180ms ease; }
 .whatsapp-cta:hover { background: var(--cream); transform: translateY(-2px); }
 
+.catalog-page { min-height: 100vh; background: var(--background); color: var(--forest); }
+.catalog-header { position: relative; overflow: hidden; background: linear-gradient(118deg, #0c241f 0%, #12352c 58%, #0d2721 100%); color: var(--cream); }
+.catalog-header::before { position: absolute; inset: 0; content: ''; pointer-events: none; opacity: .1; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitchTiles'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E"); }
+.catalog-hero-copy { position: relative; z-index: 1; max-width: 58rem; padding: 5.5rem 0 6.25rem; }
+.catalog-title { margin-top: 1.75rem; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(4rem, 8vw, 7.5rem); font-weight: 400; letter-spacing: -.055em; line-height: .86; }
+.catalog-title em { color: var(--gold); }
+.catalog-intro { margin-top: 2rem; max-width: 38rem; color: rgba(248, 241, 228, .62); font-size: .95rem; font-weight: 300; line-height: 1.8; }
+.catalog-shell { width: min(100% - 2.5rem, 1320px); margin-inline: auto; padding: 4rem 0 7rem; }
+.catalog-toolbar { display: flex; flex-direction: column; gap: 1.4rem; border-bottom: 1px solid rgba(16, 44, 37, .15); padding-bottom: 1.5rem; }
+.filter-list { display: flex; flex-wrap: wrap; gap: .55rem; margin-inline: 0; border: 0; padding: 0; }
+.filter-button { display: inline-flex; min-height: 2.7rem; align-items: center; gap: .55rem; border: 1px solid rgba(16, 44, 37, .18); border-radius: 999px; background: transparent; padding: .7rem 1rem; color: rgba(16, 44, 37, .64); font: inherit; font-size: 9px; font-weight: 750; letter-spacing: .16em; text-transform: uppercase; cursor: pointer; transition: 160ms ease; }
+.filter-button:hover { border-color: rgba(16, 44, 37, .45); color: var(--forest); }
+.filter-button[aria-pressed='true'] { border-color: var(--forest); background: var(--forest); color: var(--cream); }
+.result-count { display: flex; align-items: center; gap: .55rem; color: rgba(16, 44, 37, .48); font-size: 10px; font-weight: 650; letter-spacing: .16em; text-transform: uppercase; }
+.product-grid { display: grid; gap: 2.5rem 1.25rem; margin-top: 2.5rem; }
+.product-card { display: flex; min-width: 0; flex-direction: column; }
+.product-image { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: .35rem; background: #0c241f; }
+.product-image img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 500ms ease; }
+.product-card:hover .product-image img { transform: scale(1.018); }
+.product-badge { position: absolute; top: 1rem; left: 1rem; border: 1px solid rgba(248, 241, 228, .2); border-radius: 999px; background: rgba(10, 30, 26, .84); padding: .55rem .75rem; color: rgba(248, 241, 228, .82); font-size: 8px; font-weight: 750; letter-spacing: .17em; text-transform: uppercase; backdrop-filter: blur(10px); }
+.product-copy { display: flex; flex: 1; flex-direction: column; border-bottom: 1px solid rgba(16, 44, 37, .16); padding: 1.4rem .15rem 1.5rem; }
+.product-meta { color: var(--rust); font-size: 9px; font-weight: 750; letter-spacing: .18em; text-transform: uppercase; }
+.product-copy h2 { margin-top: .75rem; font-family: Georgia, 'Times New Roman', serif; font-size: 2rem; font-weight: 400; letter-spacing: -.03em; line-height: 1.05; }
+.product-description { margin-top: 1rem; color: rgba(16, 44, 37, .58); font-size: .82rem; line-height: 1.7; }
+.product-actions { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; margin-top: auto; padding-top: 1.5rem; }
+.product-price-label { display: block; color: rgba(16, 44, 37, .4); font-size: 8px; font-weight: 750; letter-spacing: .16em; text-transform: uppercase; }
+.product-price { display: block; margin-top: .25rem; font-family: Georgia, 'Times New Roman', serif; font-size: 1.2rem; font-weight: 400; }
+.product-enquire { display: inline-flex; min-height: 2.7rem; align-items: center; justify-content: center; gap: .55rem; border-radius: 999px; background: var(--gold); padding: .72rem .9rem; color: var(--forest); font-size: 8px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; transition: 160ms ease; }
+.product-enquire:hover { background: var(--forest); color: var(--cream); }
+.catalog-note { margin-top: 4rem; border: 1px solid rgba(16, 44, 37, .14); background: rgba(233, 222, 202, .46); padding: 1.25rem; color: rgba(16, 44, 37, .57); font-size: .75rem; line-height: 1.7; }
+.catalog-footer { background: #0a1e1a; color: var(--cream); }
+
 @media (min-width: 640px) {
   .section-shell { padding: 8.5rem 2rem; }
   .standard-card:nth-child(odd) { border-right: 1px solid rgba(16, 44, 37, .15); }
+  .catalog-shell { width: min(100% - 4rem, 1320px); }
+  .catalog-toolbar { flex-direction: row; align-items: center; justify-content: space-between; }
+  .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (min-width: 768px) {
@@ -141,6 +177,8 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
   .authenticity-pill { right: -1rem; bottom: 4.25rem; }
   .scroll-cue { display: flex; }
   .section-shell { padding: 10rem 3rem; }
+  .catalog-shell { width: min(100% - 6rem, 1320px); padding: 5rem 0 9rem; }
+  .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3.5rem 1.5rem; }
 }
 
 @media (max-width: 639px) {

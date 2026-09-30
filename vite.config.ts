@@ -1,4 +1,5 @@
 import tailwindcss from '@tailwindcss/postcss';
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
@@ -14,5 +15,13 @@ export default defineConfig({
     ? { watch: { useFsEvents: false, usePolling: true } }
     : undefined,
   plugins: [react()],
-  build: { outDir: 'dist' },
+  build: {
+    outDir: 'dist',
+    rollupOptions: {
+      input: {
+        home: fileURLToPath(new URL('index.html', import.meta.url)),
+        catalog: fileURLToPath(new URL('catalog/index.html', import.meta.url)),
+      },
+    },
+  },
 });
