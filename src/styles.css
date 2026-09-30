@@ -56,7 +56,7 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .brand-mark { display: grid; width: 2.25rem; height: 2.25rem; place-items: center; border: 1px solid rgba(215, 172, 93, 0.65); border-radius: 999px; color: var(--gold); }
 .nav-link, .footer-link { transition: color 160ms ease; }
 .nav-link:hover, .footer-link:hover { color: var(--gold); }
-.nav-enquire { display: flex; align-items: center; gap: .5rem; border: 1px solid rgba(215, 172, 93, .5); border-radius: 999px; padding: .65rem 1rem; font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; transition: 180ms ease; }
+.nav-enquire { display: flex; min-height: 2.75rem; align-items: center; gap: .5rem; border: 1px solid rgba(215, 172, 93, .5); border-radius: 999px; padding: .65rem 1rem; font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; transition: 180ms ease; }
 .nav-enquire:hover { border-color: var(--gold); background: var(--gold); color: var(--forest); }
 
 .eyebrow { display: flex; align-items: center; gap: .75rem; color: var(--gold); font-size: 10px; font-weight: 700; letter-spacing: .34em; text-transform: uppercase; }
@@ -126,11 +126,11 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
 .whatsapp-cta { position: relative; z-index: 2; margin-top: 2.5rem; display: inline-flex; align-items: center; gap: .7rem; border-radius: 999px; background: var(--gold); padding: 1rem 1.5rem; color: var(--forest); font-size: 10px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; transition: 180ms ease; }
 .whatsapp-cta:hover { background: var(--cream); transform: translateY(-2px); }
 
-.catalog-page { min-height: 100vh; background: var(--background); color: var(--forest); }
+.catalog-page { min-height: 100vh; overflow-x: hidden; background: var(--background); color: var(--forest); }
 .catalog-header { position: relative; overflow: hidden; background: linear-gradient(118deg, #0c241f 0%, #12352c 58%, #0d2721 100%); color: var(--cream); }
 .catalog-header::before { position: absolute; inset: 0; content: ''; pointer-events: none; opacity: .1; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitchTiles'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.32'/%3E%3C/svg%3E"); }
 .catalog-hero-copy { position: relative; z-index: 1; max-width: 58rem; padding: 5.5rem 0 6.25rem; }
-.catalog-title { margin-top: 1.75rem; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(4rem, 8vw, 7.5rem); font-weight: 400; letter-spacing: -.055em; line-height: .86; }
+.catalog-title { margin-top: 1.75rem; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(4rem, 8vw, 7.5rem); font-weight: 400; letter-spacing: -.055em; line-height: .86; text-wrap: balance; }
 .catalog-title em { color: var(--gold); }
 .catalog-intro { margin-top: 2rem; max-width: 38rem; color: rgba(248, 241, 228, .62); font-size: .95rem; font-weight: 300; line-height: 1.8; }
 .catalog-shell { width: min(100% - 2.5rem, 1320px); margin-inline: auto; padding: 4rem 0 7rem; }
@@ -190,6 +190,19 @@ button, summary, a { -webkit-tap-highlight-color: transparent; }
   .nav-enquire svg { display: none; }
   .standard-card { min-height: 16rem; }
   .collection-card { min-height: 32rem; }
+  .catalog-hero-copy { padding: 3.75rem 0 4.5rem; }
+  .catalog-title { margin-top: 1.4rem; font-size: clamp(3.25rem, 15.5vw, 4.25rem); line-height: .9; }
+  .catalog-intro { margin-top: 1.5rem; font-size: .88rem; line-height: 1.7; }
+  .catalog-shell { width: calc(100% - 2rem); padding: 3rem 0 6rem; }
+  .catalog-toolbar { gap: 1rem; }
+  .filter-list { flex-wrap: nowrap; margin-right: -1rem; overflow-x: auto; padding-right: 1rem; padding-bottom: .2rem; scroll-padding-left: 0; scroll-snap-type: x proximity; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .filter-list::-webkit-scrollbar { display: none; }
+  .filter-button { flex: 0 0 auto; min-height: 2.75rem; scroll-snap-align: start; }
+  .product-grid { margin-top: 2rem; gap: 2.75rem; }
+  .product-copy h2 { font-size: 1.8rem; }
+  .product-actions { align-items: center; }
+  .product-enquire { min-height: 2.75rem; }
+  .catalog-note { margin-top: 3rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
