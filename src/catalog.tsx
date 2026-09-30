@@ -8,7 +8,12 @@ import {
   MessageCircle,
   SlidersHorizontal,
 } from 'lucide-react';
-import { productEnquiryHref, whatsappHref } from './site-config';
+import {
+  contactPhoneDisplay,
+  contactPhoneHref,
+  productEnquiryHref,
+  whatsappHref,
+} from './site-config';
 import './styles.css';
 
 type Category = 'all' | 'rudraksha' | 'stones' | 'yantras';
@@ -216,7 +221,7 @@ function Catalog() {
               <a className="footer-link" href="../#story">Our story</a>
               <a className="footer-link" href="../#guide">Rudraksha guide</a>
               <a className="footer-link" href="./">Catalogue</a>
-              <a className="footer-link" href={whatsappHref} target="_blank" rel="noreferrer">Contact</a>
+              <a className="footer-link" href={contactPhoneHref}>{contactPhoneDisplay}</a>
             </div>
           </div>
           <div className="flex flex-col justify-between gap-4 pt-7 text-[9px] uppercase tracking-[0.16em] text-cream/30 sm:flex-row">

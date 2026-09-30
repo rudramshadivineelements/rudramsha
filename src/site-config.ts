@@ -1,6 +1,6 @@
-// Add the business WhatsApp number in international format, digits only.
-// Example for India: '919876543210'. Until then, WhatsApp opens with a prefilled message.
-export const whatsappNumber: string = '';
+export const whatsappNumber = '919880148652';
+export const contactPhoneDisplay = '+91 98801 48652';
+export const contactPhoneHref = 'tel:+919880148652';
 
 function whatsappLink(message: string) {
   const enquiryMessage = encodeURIComponent(message);

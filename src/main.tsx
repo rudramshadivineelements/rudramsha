@@ -12,7 +12,7 @@ import {
   ShieldCheck,
   Sparkles,
 } from 'lucide-react';
-import { whatsappHref } from './site-config';
+import { contactPhoneDisplay, contactPhoneHref, whatsappHref } from './site-config';
 import './styles.css';
 
 const standards = [
@@ -345,7 +345,11 @@ function App() {
             Tell us what you are drawn to, how you plan to use it, or simply where you would like guidance. We will share suitable pieces, details, and prices on WhatsApp.
           </p>
           <WhatsAppLink label="Start a WhatsApp enquiry" className="whatsapp-cta" />
-          <p className="mt-5 text-[9px] uppercase tracking-[0.2em] text-cream/35">Personal guidance · No obligation</p>
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[9px] uppercase tracking-[0.2em] text-cream/35">
+            <span>Personal guidance · No obligation</span>
+            <span aria-hidden="true">·</span>
+            <a href={contactPhoneHref} className="transition-colors hover:text-gold">{contactPhoneDisplay}</a>
+          </div>
         </div>
       </section>
 
@@ -357,7 +361,7 @@ function App() {
               <a className="footer-link" href="#story">Our story</a>
               <a className="footer-link" href="#guide">Rudraksha guide</a>
               <a className="footer-link" href="./catalog/">Catalogue</a>
-              <a className="footer-link" href="#enquire">Contact</a>
+              <a className="footer-link" href={contactPhoneHref}>{contactPhoneDisplay}</a>
             </div>
           </div>
           <div className="flex flex-col justify-between gap-4 pt-7 text-[9px] uppercase tracking-[0.16em] text-cream/30 sm:flex-row">
