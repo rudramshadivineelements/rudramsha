@@ -124,7 +124,7 @@ function App() {
           </a>
         </nav>
 
-        <div id="top" className="relative z-10 mx-auto grid min-h-[650px] max-w-[1440px] items-center gap-12 pb-12 pt-16 lg:grid-cols-[1.08fr_0.92fr] lg:pb-20 lg:pt-12">
+        <div id="top" className="relative z-10 mx-auto grid min-h-[650px] max-w-[1440px] items-center gap-12 pb-12 pt-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:pb-20 lg:pt-12">
           <div className="max-w-[760px]">
             <p className="eyebrow mb-8"><span />Sacred by nature · chosen with discernment</p>
             <h1 className="hero-title">
@@ -149,8 +149,6 @@ function App() {
               {/* oxlint-disable-next-line next/no-img-element */}
               <img src={`${import.meta.env.BASE_URL}hero.webp`} width="1400" height="788" alt="A natural Rudraksha bead and polished stones arranged on dark stone" className="hero-image" />
             </div>
-            <div className="hero-image-ring hero-image-ring-one" aria-hidden="true" />
-            <div className="hero-image-ring hero-image-ring-two" aria-hidden="true" />
             <div className="authenticity-pill">
               <BadgeCheck className="size-4 text-gold" strokeWidth={1.6} />
               <span>Authenticity first</span>
