@@ -2,12 +2,11 @@
 
 Static website for [rudramsha.com](https://rudramsha.com), built with React, Vite, and Tailwind CSS and deployed through GitHub Pages.
 
-## Before the public launch
+## Catalogue editing
 
-1. Add the business WhatsApp number to `src/site-config.ts` in international format, using digits only.
-2. Replace the starter collection descriptions with the first real products and availability.
-3. Confirm all origin, treatment, certification, and care claims for each product before publishing them.
-4. In the GitHub repository settings, choose **GitHub Actions** as the Pages source and confirm the custom domain is `rudramsha.com`.
+Products are stored as one employee-editable JSON file per item in [`content/products`](content/products). See [CATALOG_EDITING.md](CATALOG_EDITING.md) for the simple GitHub workflow, field reference, photo instructions, and how to add a product.
+
+The production build validates every catalogue file and image before deployment. Confirm all origin, treatment, certification, availability, and care claims for each real product before publishing it.
 
 ## Local development
 
@@ -37,7 +36,7 @@ The deployable site is generated in `dist/`.
 
 ### Phase 2 — Real collection
 
-- Add product photography and individual Rudraksha records
+- Replace sample product photography and records with real inventory
 - Add filters for type, mukhi, origin, size, and availability
 - Add a consistent product-detail template
 - Add care instructions, certification notes, and transparent pricing context
@@ -51,7 +50,7 @@ The deployable site is generated in `dist/`.
 
 ### Phase 4 — Operations
 
-- Simple inventory source (structured JSON first; managed catalog later)
+- Employee-editable structured JSON inventory with automatic validation
 - Enquiry message prefilled with the chosen product
 - Analytics with consent-aware privacy settings
 - Optional payments only when fulfilment and return policies are ready

@@ -7,7 +7,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "validate:catalog": "node scripts/validate-catalog.mjs",
+    "build": "npm run validate:catalog && vite build",
     "preview": "vite preview",
     "lint": "oxlint src",
     "format": "oxfmt"

@@ -17,16 +17,20 @@ import {
 import './styles.css';
 
 type Category = 'all' | 'rudraksha' | 'stones' | 'yantras';
+type Availability = 'available' | 'reserved' | 'sold';
 
 type Product = {
+  id: string;
+  published: boolean;
+  order: number;
   name: string;
   category: Exclude<Category, 'all'>;
-  categoryLabel: string;
   detail: string;
   description: string;
   image: string;
   alt: string;
-  price?: string;
+  price: string;
+  availability: Availability;
 };
 
 const filters: { value: Category; label: string }[] = [
@@ -36,66 +40,32 @@ const filters: { value: Category; label: string }[] = [
   { value: 'yantras', label: 'Yantras' },
 ];
 
-const products: Product[] = [
-  {
-    name: 'Five Mukhi Rudraksha',
-    category: 'rudraksha',
-    categoryLabel: 'Rudraksha',
-    detail: 'Nepal origin · approx. 22–24 mm',
-    description: 'A naturally grooved individual bead selected for its balanced form, clear faces, and rich surface character.',
-    image: '../catalog/five-mukhi-rudraksha.webp',
-    alt: 'Natural five mukhi Rudraksha bead on a dark green stone plinth',
-    price: '₹2,850',
-  },
-  {
-    name: 'Rudraksha Meditation Mala',
-    category: 'rudraksha',
-    categoryLabel: 'Rudraksha',
-    detail: '108 + 1 beads · hand knotted',
-    description: 'A complete meditation mala with naturally textured beads, a warm metal guru bead, and a rust-red tassel.',
-    image: '../catalog/rudraksha-mala.webp',
-    alt: 'Rudraksha meditation mala with a red tassel arranged on natural stone',
-  },
-  {
-    name: 'Amethyst Cluster',
-    category: 'stones',
-    categoryLabel: 'Semi-precious stone',
-    detail: 'Brazil origin · natural formation',
-    description: 'A sculptural cluster chosen for its saturated violet tone, dimensional points, and naturally varied crystalline form.',
-    image: '../catalog/amethyst-cluster.webp',
-    alt: 'Natural purple amethyst cluster photographed on dark stone',
-    price: '₹4,200',
-  },
-  {
-    name: 'Tiger Eye Bracelet',
-    category: 'stones',
-    categoryLabel: 'Semi-precious stone',
-    detail: '8 mm beads · stretch fit',
-    description: 'Polished tiger eye beads displaying warm golden-brown bands and the stone’s characteristic shifting lustre.',
-    image: '../catalog/tiger-eye-bracelet.webp',
-    alt: 'Polished tiger eye gemstone bracelet on a dark stone surface',
-    price: '₹1,650',
-  },
-  {
-    name: 'Brass Shri Yantra',
-    category: 'yantras',
-    categoryLabel: 'Yantra',
-    detail: 'Antique brass · 6 inch plate',
-    description: 'A weighty engraved meditation plate with layered sacred geometry and a quietly aged, hand-finished character.',
-    image: '../catalog/shri-yantra.webp',
-    alt: 'Engraved antique brass Shri Yantra plate on dark stone',
-    price: '₹3,200',
-  },
-  {
-    name: 'Copper Meru Shri Yantra',
-    category: 'yantras',
-    categoryLabel: 'Yantra',
-    detail: 'Solid copper · 4 inch base',
-    description: 'A dimensional Meru form crafted in copper, bringing the geometry of the Shri Yantra into a sculptural object.',
-    image: '../catalog/meru-yantra.webp',
-    alt: 'Three-dimensional copper Meru Shri Yantra on natural stone',
-  },
-];
+const productFiles = import.meta.glob('../content/products/*.json', {
+  eager: true,
+  import: 'default',
+});
+
+const products = (Object.values(productFiles) as Product[])
+  .filter((product) => product.published)
+  .sort((left, right) => left.order - right.order);
+
+const categoryLabels: Record<Exclude<Category, 'all'>, string> = {
+  rudraksha: 'Rudraksha',
+  stones: 'Semi-precious stone',
+  yantras: 'Yantra',
+};
+
+const availabilityLabels: Record<Availability, string> = {
+  available: 'Available',
+  reserved: 'Reserved',
+  sold: 'Sold',
+};
+
+const enquiryLabels: Record<Availability, string> = {
+  available: 'Enquire',
+  reserved: 'Join waitlist',
+  sold: 'Find similar',
+};
 
 function initialCategory(): Category {
   const requestedCategory = new URLSearchParams(window.location.search).get('category');
@@ -179,12 +149,15 @@ function Catalog() {
 
         <div className="product-grid">
           {visibleProducts.map((product) => (
-            <article key={product.name} className="product-card">
+            <article key={product.id} className="product-card">
               <div className="product-image">
                 {/* Static catalogue images are pre-compressed WebP assets in this Vite site. */}
                 {/* oxlint-disable-next-line next/no-img-element */}
-                <img src={product.image} width="900" height="1125" loading="lazy" alt={product.alt} />
-                <span className="product-badge">{product.categoryLabel}</span>
+                <img src={`../catalog/${product.image}`} width="900" height="1125" loading="lazy" alt={product.alt} />
+                <span className="product-badge">{categoryLabels[product.category]}</span>
+                <span className={`product-stock product-stock-${product.availability}`}>
+                  {availabilityLabels[product.availability]}
+                </span>
               </div>
               <div className="product-copy">
                 <p className="product-meta">{product.detail}</p>
@@ -193,7 +166,7 @@ function Catalog() {
                 <div className="product-actions">
                   <div>
                     <span className="product-price-label">{product.price ? 'Indicative price' : 'Price'}</span>
-                    <strong className="product-price">{product.price ?? 'On enquiry'}</strong>
+                    <strong className="product-price">{product.price || 'On enquiry'}</strong>
                   </div>
                   <a
                     href={productEnquiryHref(product.name, product.price)}
@@ -202,7 +175,7 @@ function Catalog() {
                     className="product-enquire"
                     aria-label={`Enquire about ${product.name} on WhatsApp`}
                   >
-                    <MessageCircle className="size-3.5" /> Enquire
+                    <MessageCircle className="size-3.5" /> {enquiryLabels[product.availability]}
                   </a>
                 </div>
               </div>
