@@ -3,7 +3,6 @@ import React, { useMemo, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import {
   ArrowLeft,
-  ArrowUpRight,
   Gem,
   MessageCircle,
   SlidersHorizontal,
@@ -97,25 +96,27 @@ function Catalog() {
 
   return (
     <main className="catalog-page">
-      <header className="catalog-header px-5 pt-5 sm:px-8 lg:px-12">
-        <nav className="relative z-10 mx-auto flex max-w-[1440px] items-center justify-between border-b border-cream/15 pb-5" aria-label="Catalogue navigation">
-          <a href="../" aria-label="Return to Rudramsha home"><Brand /></a>
-          <div className="hidden items-center gap-9 text-[11px] font-medium uppercase tracking-[0.18em] text-cream/70 md:flex">
-            <a className="nav-link" href="../#story">Our philosophy</a>
-            <a className="nav-link" href="../#guide">Rudraksha guide</a>
-            <a className="nav-link text-gold" href="./">Catalogue</a>
-          </div>
-          <a href={whatsappHref} target="_blank" rel="noreferrer" className="nav-enquire">
-            Enquire <ArrowUpRight className="size-3.5" />
-          </a>
-        </nav>
+      <header className="catalog-header pt-[72px]">
+        <div className="site-header px-4 sm:px-8 lg:px-12">
+          <nav className="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between text-cream" aria-label="Catalogue navigation">
+            <a href="../" aria-label="Return to Rudramsha home"><Brand /></a>
+            <div className="hidden items-center gap-8 text-[10px] font-semibold uppercase tracking-[0.17em] text-cream/65 lg:flex">
+              <a className="nav-link" href="../#collection">Collection</a>
+              <a className="nav-link" href="../#essentials">Rudraksha 101</a>
+              <a className="nav-link text-gold" href="./">Catalogue</a>
+            </div>
+            <div className="nav-actions">
+              <a href="../" className="nav-catalog"><ArrowLeft className="size-3.5" /> Home</a>
+              <a href={whatsappHref} target="_blank" rel="noreferrer" className="nav-whatsapp">
+                <MessageCircle className="size-4" strokeWidth={1.7} /><span>WhatsApp</span>
+              </a>
+            </div>
+          </nav>
+        </div>
 
-        <div className="mx-auto max-w-[1320px]">
+        <div className="mx-auto max-w-[1320px] px-5 sm:px-8 lg:px-12">
           <div className="catalog-hero-copy">
-            <a href="../" className="inline-flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.2em] text-cream/45 transition-colors hover:text-gold">
-              <ArrowLeft className="size-3.5" /> Back to the story
-            </a>
-            <p className="eyebrow mt-12"><span />The current edit</p>
+            <p className="eyebrow"><span />The current edit</p>
             <h1 className="catalog-title">Objects of nature.<br /><em>Chosen with care.</em></h1>
             <p className="catalog-intro">Explore a considered selection of Rudrakshas, natural stones, and sacred yantras. Every enquiry begins with the individual piece—its character, details, and present availability.</p>
           </div>
@@ -191,8 +192,8 @@ function Catalog() {
           <div className="flex flex-col justify-between gap-9 border-b border-cream/12 pb-10 md:flex-row md:items-end">
             <a href="../"><Brand /></a>
             <div className="flex flex-wrap gap-x-7 gap-y-3 text-[9px] font-semibold uppercase tracking-[0.2em] text-cream/48">
-              <a className="footer-link" href="../#story">Our story</a>
-              <a className="footer-link" href="../#guide">Rudraksha guide</a>
+              <a className="footer-link" href="../#collection">Collection</a>
+              <a className="footer-link" href="../#essentials">Rudraksha 101</a>
               <a className="footer-link" href="./">Catalogue</a>
               <a className="footer-link" href={contactPhoneHref}>{contactPhoneDisplay}</a>
             </div>

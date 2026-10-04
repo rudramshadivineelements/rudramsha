@@ -2,14 +2,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
-  ArrowDown,
   ArrowUpRight,
   BadgeCheck,
   CircleCheck,
   Gem,
   Leaf,
   MessageCircle,
-  ShieldCheck,
   Sparkles,
 } from 'lucide-react';
 import { contactPhoneDisplay, contactPhoneHref, whatsappHref } from './site-config';
@@ -112,38 +110,46 @@ function WhatsAppLink({ label, className = '' }: { label: string; className?: st
 function App() {
   return (
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
-      <section className="hero-shell relative min-h-[760px] px-5 pb-10 pt-5 sm:px-8 lg:min-h-screen lg:px-12">
-        <div className="hero-glow" aria-hidden="true" />
-        <nav className="relative z-20 mx-auto flex max-w-[1440px] items-center justify-between border-b border-cream/15 pb-5 text-cream" aria-label="Primary navigation">
+      <header className="site-header px-4 sm:px-8 lg:px-12">
+        <nav className="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between text-cream" aria-label="Primary navigation">
           <a href="#top" aria-label="Rudramsha Divine Elements home"><Brand /></a>
 
-          <div className="hidden items-center gap-9 text-[11px] font-medium uppercase tracking-[0.18em] text-cream/70 md:flex">
-            <a className="nav-link" href="#story">Our philosophy</a>
-            <a className="nav-link" href="#guide">Rudraksha guide</a>
-            <a className="nav-link" href="./catalog/">Catalogue</a>
+          <div className="hidden items-center gap-8 text-[10px] font-semibold uppercase tracking-[0.17em] text-cream/65 lg:flex">
+            <a className="nav-link" href="#collection">Collection</a>
+            <a className="nav-link" href="#essentials">Rudraksha 101</a>
+            <a className="nav-link" href="#faq">Questions</a>
           </div>
 
-          <a href="#enquire" className="nav-enquire">
-            Enquire <ArrowUpRight className="size-3.5" />
-          </a>
+          <div className="nav-actions">
+            <a href="./catalog/" className="nav-catalog">
+              Catalogue <ArrowUpRight className="size-3.5" />
+            </a>
+            <a href={whatsappHref} target="_blank" rel="noreferrer" className="nav-whatsapp" aria-label="Enquire on WhatsApp">
+              <MessageCircle className="size-4" strokeWidth={1.7} />
+              <span>WhatsApp</span>
+            </a>
+          </div>
         </nav>
+      </header>
 
-        <div id="top" className="relative z-10 mx-auto grid min-h-[650px] max-w-[1440px] items-center gap-12 pb-12 pt-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:pb-20 lg:pt-12">
+      <section id="top" className="hero-shell relative px-5 pb-12 pt-24 sm:px-8 lg:px-12 lg:pb-16 lg:pt-28">
+        <div className="hero-glow" aria-hidden="true" />
+        <div className="relative z-10 mx-auto grid max-w-[1440px] items-center gap-12 py-10 lg:min-h-[590px] lg:grid-cols-[0.88fr_1.12fr] lg:gap-16 lg:py-8">
           <div className="max-w-[760px]">
-            <p className="eyebrow mb-8"><span />Sacred by nature · chosen with discernment</p>
+            <p className="eyebrow mb-7"><span />Sacred by nature · chosen with discernment</p>
             <h1 className="hero-title">
               Nature,<br />
               <span>made divine.</span>
             </h1>
-            <p className="mt-10 max-w-lg text-[15px] font-light leading-7 text-cream/68 sm:text-base">
+            <p className="mt-8 max-w-lg text-[15px] font-light leading-7 text-cream/68 sm:text-base">
               Authentic Rudrakshas and semi-precious stones, thoughtfully sourced for those who seek meaning, beauty, and a deeper connection to the natural world.
             </p>
-            <div className="mt-10 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap gap-3">
               <a href="./catalog/" className="cta-primary group">
                 Explore the catalogue
                 <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </a>
-              <a href="#story" className="cta-secondary">The story of Rudraksha</a>
+              <a href="#essentials" className="cta-secondary">Rudraksha 101</a>
             </div>
           </div>
 
@@ -159,11 +165,6 @@ function App() {
             </div>
           </div>
         </div>
-
-        <a href="#story" className="scroll-cue" aria-label="Scroll to discover our story">
-          <span>Explore</span>
-          <ArrowDown className="size-4 animate-bounce" strokeWidth={1.3} />
-        </a>
       </section>
 
       <section className="bg-sand px-5 py-6 sm:px-8 lg:px-12" aria-label="Our standards">
@@ -177,105 +178,17 @@ function App() {
         </div>
       </section>
 
-      <section id="story" className="section-shell bg-background">
-        <div className="mx-auto grid max-w-[1320px] gap-14 lg:grid-cols-[0.78fr_1.22fr] lg:gap-28">
-          <div>
-            <p className="section-kicker">The origin</p>
-            <p className="mt-8 max-w-xs text-sm leading-7 text-forest/58">
-              A sacred botanical object shaped by time, place, and tradition—not manufactured into sameness.
-            </p>
-          </div>
-          <div>
-            <h2 className="section-title max-w-4xl">
-              Born of a tree.<br /><em>Held as sacred.</em>
-            </h2>
-            <div className="mt-12 grid gap-10 border-t border-forest/15 pt-9 sm:grid-cols-2">
-              <p className="body-copy">
-                Rudraksha is the naturally grooved seed of trees from the <i>Elaeocarpus</i> family. Across Hindu traditions, it has long been held close in prayer, meditation, and daily life—a bridge between the living world and inward practice.
-              </p>
-              <p className="body-copy">
-                Its name is often understood as “the eye of Rudra.” Yet beyond symbolism, every bead is distinctly earthly: textured, irregular, and marked by natural lines known as <i>mukhis</i>. No two carry exactly the same presence.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="guide" className="section-shell bg-forest text-cream">
-        <div className="mx-auto max-w-[1320px]">
-          <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
-            <div>
-              <p className="section-kicker section-kicker-light">Understanding Rudraksha</p>
-              <h2 className="section-title mt-8 max-w-3xl text-cream">
-                The beauty is in<br /><em className="text-gold">what nature reveals.</em>
-              </h2>
-            </div>
-            <p className="max-w-xl text-sm font-light leading-7 text-cream/62 lg:pb-3">
-              A good choice begins with understanding the object itself. We look beyond dramatic claims and focus on natural form, appropriate identification, honest context, and the way you wish to use it.
-            </p>
-          </div>
-
-          <div className="mt-16 grid border-y border-cream/14 md:grid-cols-3">
-            <article className="guide-card">
-              <span className="guide-symbol"><Leaf /></span>
-              <p className="guide-number">I</p>
-              <h3>Origin</h3>
-              <p>Geography can influence a bead’s size, shape, density, and surface character. Origin is one part of the story, never a shortcut to quality.</p>
-            </article>
-            <article className="guide-card">
-              <span className="guide-symbol"><Sparkles /></span>
-              <p className="guide-number">II</p>
-              <h3>Mukhi</h3>
-              <p>The naturally occurring longitudinal lines are counted as faces or mukhis. Identification should be careful, clear, and never forced.</p>
-            </article>
-            <article className="guide-card">
-              <span className="guide-symbol"><Gem /></span>
-              <p className="guide-number">III</p>
-              <h3>Character</h3>
-              <p>Shape, texture, condition, and workmanship matter. Natural irregularity is expected; thoughtful selection honours it.</p>
-            </article>
-          </div>
-
-          <p className="mt-7 max-w-3xl text-[11px] leading-5 text-cream/38">
-            Traditional spiritual meanings are shared as cultural guidance, not medical advice or a promise of specific outcomes. Personal experience and practice vary.
-          </p>
-        </div>
-      </section>
-
-      <section className="section-shell bg-sand">
-        <div className="mx-auto max-w-[1320px]">
-          <div className="grid gap-12 lg:grid-cols-[0.74fr_1.26fr]">
-            <div>
-              <p className="section-kicker">The Rudramsha standard</p>
-              <h2 className="mt-8 max-w-md font-serif text-5xl leading-[0.94] tracking-[-0.045em] text-forest sm:text-6xl">
-                Trust is the true <em className="text-rust">luxury.</em>
-              </h2>
-            </div>
-            <div className="grid border-l border-forest/15 sm:grid-cols-2">
-              {standards.map((item) => (
-                <article key={item.number} className="standard-card">
-                  <span>{item.number}</span>
-                  <CircleCheck className="size-5 text-rust" strokeWidth={1.4} />
-                  <h3>{item.title}</h3>
-                  <p>{item.copy}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="collection" className="section-shell bg-background">
+      <section id="collection" className="section-shell section-shell-compact bg-background">
         <div className="mx-auto max-w-[1320px]">
           <div className="flex flex-col justify-between gap-7 sm:flex-row sm:items-end">
             <div>
-              <p className="section-kicker">Begin your journey</p>
-              <h2 className="section-title mt-8">The collection</h2>
+              <p className="section-kicker">Begin with the collection</p>
+              <h2 className="section-title mt-7">Choose your path</h2>
             </div>
-            <p className="max-w-sm text-sm leading-6 text-forest/58">A considered first edit. Individual pieces and current availability are shared personally.</p>
+            <a href="./catalog/" className="text-link">View the full catalogue <ArrowUpRight className="size-3.5" /></a>
           </div>
 
-          <div className="mt-14 grid gap-px overflow-hidden border border-forest/15 bg-forest/15 lg:grid-cols-3">
+          <div className="collection-grid mt-10">
             {collections.map((item, index) => (
               <article key={item.title} className={`collection-card ${item.tone}`}>
                 <div className="collection-orb" aria-hidden="true"><span /></div>
@@ -297,29 +210,75 @@ function App() {
         </div>
       </section>
 
-      <section className="section-shell bg-rust text-cream">
-        <div className="mx-auto grid max-w-[1320px] gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div>
-            <ShieldCheck className="mb-8 size-9 text-gold" strokeWidth={1.2} />
-            <p className="section-kicker section-kicker-light">A quieter promise</p>
-            <h2 className="mt-8 max-w-xl font-serif text-5xl leading-[0.94] tracking-[-0.045em] sm:text-7xl">
-              No spectacle.<br /><em className="text-gold">Just substance.</em>
-            </h2>
+      <section id="essentials" className="section-shell section-shell-compact bg-forest text-cream">
+        <div className="mx-auto max-w-[1320px]">
+          <div className="grid gap-10 lg:grid-cols-[1fr_0.86fr] lg:items-end">
+            <div>
+              <p className="section-kicker section-kicker-light">Rudraksha 101</p>
+              <h2 className="section-title mt-7 max-w-3xl text-cream">
+                Born of a tree.<br /><em className="text-gold">Held as sacred.</em>
+              </h2>
+            </div>
+            <div className="space-y-5 text-sm font-light leading-7 text-cream/62">
+              <p>Rudraksha is the naturally grooved seed of trees from the <i>Elaeocarpus</i> family. Across Hindu traditions, it has long been used in prayer, meditation, and daily practice.</p>
+              <p>Every bead is distinctly earthly—textured, irregular, and marked by natural lines known as <i>mukhis</i>. No two carry exactly the same presence.</p>
+            </div>
           </div>
-          <blockquote className="border-l border-cream/20 pl-8 sm:pl-12">
-            <p className="font-serif text-2xl font-normal leading-snug text-cream/92 sm:text-3xl">
-              “We believe sacred objects deserve the same thing people do: context, honesty, and care.”
-            </p>
-            <footer className="mt-8 text-[10px] font-semibold uppercase tracking-[0.22em] text-cream/55">The Rudramsha philosophy</footer>
-          </blockquote>
+
+          <div className="guide-grid mt-10">
+            <article className="guide-card">
+              <span className="guide-symbol"><Leaf /></span>
+              <p className="guide-number">I</p>
+              <h3>Origin</h3>
+              <p>Geography can influence size, shape, density, and surface character. Origin is one part of the story, never a shortcut to quality.</p>
+            </article>
+            <article className="guide-card">
+              <span className="guide-symbol"><Sparkles /></span>
+              <p className="guide-number">II</p>
+              <h3>Mukhi</h3>
+              <p>The naturally occurring longitudinal lines are counted as faces or mukhis. Identification should be careful and clear.</p>
+            </article>
+            <article className="guide-card">
+              <span className="guide-symbol"><Gem /></span>
+              <p className="guide-number">III</p>
+              <h3>Character</h3>
+              <p>Shape, texture, condition, and workmanship matter. Natural irregularity is expected; thoughtful selection honours it.</p>
+            </article>
+          </div>
+
+          <p className="mt-6 max-w-3xl text-[11px] leading-5 text-cream/38">
+            Traditional spiritual meanings are shared as cultural guidance, not medical advice or a promise of specific outcomes. Personal experience and practice vary.
+          </p>
         </div>
       </section>
 
-      <section className="section-shell bg-background">
-        <div className="mx-auto grid max-w-[1320px] gap-14 lg:grid-cols-[0.72fr_1.28fr]">
+      <section className="standards-shell bg-sand px-5 py-14 sm:px-8 lg:px-12 lg:py-16">
+        <div className="mx-auto grid max-w-[1320px] gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+          <div>
+            <p className="section-kicker">The Rudramsha standard</p>
+            <h2 className="mt-6 max-w-md font-serif text-4xl leading-[0.96] tracking-[-0.04em] text-forest sm:text-5xl">
+              Trust is the true <em className="text-rust">luxury.</em>
+            </h2>
+          </div>
+          <div className="standards-grid">
+            {standards.map((item) => (
+              <article key={item.number} className="standard-card">
+                <span>{item.number}</span>
+                <CircleCheck className="size-5 text-rust" strokeWidth={1.4} />
+                <h3>{item.title}</h3>
+                <p>{item.copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" className="section-shell section-shell-compact bg-background">
+        <div className="mx-auto grid max-w-[1320px] gap-10 lg:grid-cols-[0.72fr_1.28fr]">
           <div>
             <p className="section-kicker">Questions, answered</p>
-            <h2 className="mt-8 font-serif text-5xl leading-none tracking-[-0.045em] text-forest sm:text-6xl">Before you choose.</h2>
+            <h2 className="mt-7 font-serif text-5xl leading-none tracking-[-0.045em] text-forest sm:text-6xl">Before you choose.</h2>
+            <a href="./catalog/" className="text-link mt-8">Browse available pieces <ArrowUpRight className="size-3.5" /></a>
           </div>
           <div className="border-t border-forest/15">
             {faqs.map((faq, index) => (
@@ -335,14 +294,14 @@ function App() {
         </div>
       </section>
 
-      <section id="enquire" className="enquire-shell px-5 py-24 sm:px-8 sm:py-32 lg:px-12">
-        <div className="relative z-10 mx-auto max-w-[980px] text-center">
-          <p className="eyebrow justify-center"><span />A personal beginning<span /></p>
-          <h2 className="mt-9 font-serif text-[clamp(3.6rem,8vw,7.8rem)] leading-[0.86] tracking-[-0.055em] text-cream">
+      <section id="enquire" className="enquire-shell px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
+        <div className="relative z-10 mx-auto max-w-[900px] text-center">
+          <p className="eyebrow justify-center"><span />Personal guidance<span /></p>
+          <h2 className="mt-7 font-serif text-[clamp(3.25rem,7vw,6.5rem)] leading-[0.88] tracking-[-0.055em] text-cream">
             Find the piece<br /><em className="text-gold">that speaks to you.</em>
           </h2>
-          <p className="mx-auto mt-9 max-w-xl text-sm font-light leading-7 text-cream/62 sm:text-base">
-            Tell us what you are drawn to, how you plan to use it, or simply where you would like guidance. We will share suitable pieces, details, and prices on WhatsApp.
+          <p className="mx-auto mt-7 max-w-xl text-sm font-light leading-7 text-cream/62 sm:text-base">
+            Tell us what you are drawn to or how you plan to use it. We will share suitable pieces, details, and prices on WhatsApp.
           </p>
           <WhatsAppLink label="Start a WhatsApp enquiry" className="whatsapp-cta" />
           <div className="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[9px] uppercase tracking-[0.2em] text-cream/35">
@@ -353,13 +312,14 @@ function App() {
         </div>
       </section>
 
-      <footer className="bg-[#0a1e1a] px-5 pb-9 pt-12 text-cream sm:px-8 lg:px-12">
+      <footer className="bg-[#0a1e1a] px-5 pb-9 pt-10 text-cream sm:px-8 lg:px-12">
         <div className="mx-auto max-w-[1440px]">
-          <div className="flex flex-col justify-between gap-9 border-b border-cream/12 pb-10 md:flex-row md:items-end">
+          <div className="flex flex-col justify-between gap-8 border-b border-cream/12 pb-9 md:flex-row md:items-end">
             <Brand />
             <div className="flex flex-wrap gap-x-7 gap-y-3 text-[9px] font-semibold uppercase tracking-[0.2em] text-cream/48">
-              <a className="footer-link" href="#story">Our story</a>
-              <a className="footer-link" href="#guide">Rudraksha guide</a>
+              <a className="footer-link" href="#collection">Collection</a>
+              <a className="footer-link" href="#essentials">Rudraksha 101</a>
+              <a className="footer-link" href="#faq">Questions</a>
               <a className="footer-link" href="./catalog/">Catalogue</a>
               <a className="footer-link" href={contactPhoneHref}>{contactPhoneDisplay}</a>
             </div>
