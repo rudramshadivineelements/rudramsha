@@ -87,7 +87,9 @@ function Brand() {
   return (
     <span className="flex items-center gap-3">
       <span className="brand-mark" aria-hidden="true">
-        <Gem className="size-4" strokeWidth={1.5} />
+        {/* The official emblem is an exact supplied vector asset. */}
+        {/* oxlint-disable-next-line next/no-img-element */}
+        <img src={`${import.meta.env.BASE_URL}rudramsha-emblem.svg`} alt="" className="brand-emblem" />
       </span>
       <span>
         <span className="block font-serif text-[19px] leading-none tracking-[0.08em]">RUDRAMSHA</span>
