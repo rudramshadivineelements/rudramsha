@@ -36,7 +36,7 @@ type Product = {
 const filters: { value: Category; label: string }[] = [
   { value: 'all', label: 'All pieces' },
   { value: 'rudraksha', label: 'Rudrakshas' },
-  { value: 'stones', label: 'Semi-precious stones' },
+  { value: 'stones', label: 'Stones & bracelets' },
   { value: 'yantras', label: 'Yantras' },
 ];
 
@@ -51,7 +51,7 @@ const products = (Object.values(productFiles) as Product[])
 
 const categoryLabels: Record<Exclude<Category, 'all'>, string> = {
   rudraksha: 'Rudraksha',
-  stones: 'Semi-precious stone',
+  stones: 'Stone & bracelet',
   yantras: 'Yantra',
 };
 
@@ -121,7 +121,7 @@ function Catalog() {
           <div className="catalog-hero-copy">
             <p className="eyebrow"><span />The current edit</p>
             <h1 className="catalog-title">Objects of nature.<br /><em>Chosen with care.</em></h1>
-            <p className="catalog-intro">Explore a considered selection of Rudrakshas, natural stones, and sacred yantras. Every enquiry begins with the individual piece—its character, details, and present availability.</p>
+            <p className="catalog-intro">Explore a considered selection of Rudrakshas, stone bracelets, natural stones, and sacred yantras. Every enquiry begins with the individual piece—its character, details, and present availability.</p>
           </div>
         </div>
       </header>
@@ -188,7 +188,7 @@ function Catalog() {
           ))}
         </div>
 
-        <p className="catalog-note"><strong>Catalogue note:</strong> Items marked <strong>Old</strong> are earlier sample entries retained temporarily and may be removed. Product images represent the design and character of a piece; natural colour, pattern, bead arrangement, and size can vary by batch. Product names and traditional intentions do not promise financial or other outcomes.</p>
+        <p className="catalog-note"><strong>Catalogue note:</strong> Items marked <strong>Old</strong> are earlier sample entries retained temporarily and may be removed. Product images represent the design and character of a piece; material colour, pattern, bead arrangement, and size can vary by batch. Product names and traditional intentions do not promise medical, financial, academic, relationship, or other outcomes.</p>
       </section>
 
       <footer className="catalog-footer px-5 pb-9 pt-12 sm:px-8 lg:px-12">

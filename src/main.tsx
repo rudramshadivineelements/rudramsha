@@ -46,8 +46,8 @@ const collections = [
   },
   {
     eyebrow: 'Earth’s palette',
-    title: 'Semi-precious stones',
-    copy: 'Natural stones selected for colour, character, polish, and the quiet beauty of variation.',
+    title: 'Stones & bracelets',
+    copy: 'Natural stones and thoughtfully composed bracelets selected for colour, character, polish, and the beauty of variation.',
     tone: 'collection-stones',
     category: 'stones',
   },
@@ -144,7 +144,7 @@ function App() {
               <span>made divine.</span>
             </h1>
             <p className="mt-8 max-w-lg text-[15px] font-light leading-7 text-cream/68 sm:text-base">
-              Authentic Rudrakshas and semi-precious stones, thoughtfully sourced for those who seek meaning, beauty, and a deeper connection to the natural world.
+              Authentic Rudrakshas, thoughtfully composed stone bracelets, and sacred objects for those who seek meaning, beauty, and a deeper connection to the natural world.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="./catalog/" className="cta-primary group">
