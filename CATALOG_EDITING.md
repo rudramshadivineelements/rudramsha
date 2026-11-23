@@ -24,7 +24,7 @@ Example:
 | `published` | `true` to show the item, or `false` to hide it |
 | `order` | A whole number; smaller numbers appear first |
 | `name` | Product name |
-| `category` | Exactly `rudraksha`, `stones`, or `yantras` |
+| `category` | Exactly `rudraksha`, `stones`, `yantras`, or `wood` |
 | `detail` | Short facts such as origin, size, material, or bead count |
 | `description` | One concise paragraph about the individual piece |
 | `image` | Exact image filename from `public/catalog` |

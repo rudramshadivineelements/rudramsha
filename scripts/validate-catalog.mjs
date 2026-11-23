@@ -5,7 +5,7 @@ import process from 'node:process';
 const projectRoot = process.cwd();
 const productDirectory = path.join(projectRoot, 'content', 'products');
 const imageDirectory = path.join(projectRoot, 'public', 'catalog');
-const allowedCategories = new Set(['rudraksha', 'stones', 'yantras']);
+const allowedCategories = new Set(['rudraksha', 'stones', 'yantras', 'wood']);
 const allowedAvailability = new Set(['available', 'reserved', 'sold']);
 const requiredTextFields = ['id', 'name', 'category', 'detail', 'description', 'image', 'alt', 'availability', 'tag'];
 
@@ -54,7 +54,7 @@ for (const filename of filenames) {
   }
 
   if (typeof product.category === 'string' && !allowedCategories.has(product.category)) {
-    errors.push(`${filename}: "category" must be rudraksha, stones, or yantras.`);
+    errors.push(`${filename}: "category" must be rudraksha, stones, yantras, or wood.`);
   }
 
   if (typeof product.availability === 'string' && !allowedAvailability.has(product.availability)) {
