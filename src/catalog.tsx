@@ -29,6 +29,8 @@ type Product = {
   alt: string;
   price: string;
   availability: Availability;
+  tag: string;
+  note?: string;
 };
 
 const filters: { value: Category; label: string }[] = [
@@ -156,7 +158,7 @@ function Catalog() {
                 {/* Static catalogue images are pre-compressed WebP assets in this Vite site. */}
                 {/* oxlint-disable-next-line next/no-img-element */}
                 <img src={`../catalog/${product.image}`} width="900" height="1125" loading="lazy" alt={product.alt} />
-                <span className="product-badge">{categoryLabels[product.category]}</span>
+                <span className="product-badge">{product.tag} · {categoryLabels[product.category]}</span>
                 <span className={`product-stock product-stock-${product.availability}`}>
                   {availabilityLabels[product.availability]}
                 </span>
@@ -165,6 +167,7 @@ function Catalog() {
                 <p className="product-meta">{product.detail}</p>
                 <h2>{product.name}</h2>
                 <p className="product-description">{product.description}</p>
+                {product.note && <p className="product-note">{product.note}</p>}
                 <div className="product-actions">
                   <div>
                     <span className="product-price-label">{product.price ? 'Indicative price' : 'Price'}</span>
@@ -185,7 +188,7 @@ function Catalog() {
           ))}
         </div>
 
-        <p className="catalog-note"><strong>Sample catalogue:</strong> These first entries, availability, specifications, and prices are placeholders for the catalogue structure. Replace them with the details of each verified piece before accepting orders. Natural colour, shape, and surface character will vary from piece to piece.</p>
+        <p className="catalog-note"><strong>Catalogue note:</strong> Items marked <strong>Old</strong> are earlier sample entries retained temporarily and may be removed. Product images represent the design and character of a piece; natural colour, pattern, bead arrangement, and size can vary by batch. Product names and traditional intentions do not promise financial or other outcomes.</p>
       </section>
 
       <footer className="catalog-footer px-5 pb-9 pt-12 sm:px-8 lg:px-12">

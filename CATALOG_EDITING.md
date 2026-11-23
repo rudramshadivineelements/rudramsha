@@ -31,6 +31,8 @@ Example:
 | `alt` | A plain description of the photo for accessibility |
 | `price` | A display price such as `₹2,850`, or `""` for **On enquiry** |
 | `availability` | Exactly `available`, `reserved`, or `sold` |
+| `tag` | A short catalogue label such as `New`, `Old`, or `Limited` |
+| `note` | Optional customer-facing note, such as a batch-variation disclaimer |
 
 Leave `id` unchanged after a product is first published.
 

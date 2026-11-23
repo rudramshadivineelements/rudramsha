@@ -7,7 +7,7 @@ const productDirectory = path.join(projectRoot, 'content', 'products');
 const imageDirectory = path.join(projectRoot, 'public', 'catalog');
 const allowedCategories = new Set(['rudraksha', 'stones', 'yantras']);
 const allowedAvailability = new Set(['available', 'reserved', 'sold']);
-const requiredTextFields = ['id', 'name', 'category', 'detail', 'description', 'image', 'alt', 'availability'];
+const requiredTextFields = ['id', 'name', 'category', 'detail', 'description', 'image', 'alt', 'availability', 'tag'];
 
 const filenames = (await readdir(productDirectory))
   .filter((filename) => filename.endsWith('.json'))
@@ -47,6 +47,10 @@ for (const filename of filenames) {
 
   if (typeof product.price !== 'string') {
     errors.push(`${filename}: "price" must be text; use an empty string for On enquiry.`);
+  }
+
+  if (product.note !== undefined && (typeof product.note !== 'string' || product.note.trim() === '')) {
+    errors.push(`${filename}: "note" must be non-empty text when included.`);
   }
 
   if (typeof product.category === 'string' && !allowedCategories.has(product.category)) {
